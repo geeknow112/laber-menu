@@ -1,5 +1,6 @@
 <?php
 include dirname(__DIR__). '/order-export/lib/convert_format.php';
+include dirname(__DIR__). '/laber-menu/config.php';
 
 /*
 Plugin Name: Laber Menu
@@ -40,18 +41,22 @@ class LaberMenu {
 	 **/
 	function add_sub_menu() {
 		$cur_user = wp_get_current_user();
+
+		$Config = new Config;
+		$titles = $Config->get_menu_title();
+
 		if (in_array($cur_user->user_login, $this->_allow_users)) {
 			switch ($cur_user->user_login) {
 				case 'yamachu':
 				case 'ceo':
 				case 'admin':
 				case 'admin-secret':
-					add_submenu_page('lober-tools', 'ig_title','ig_title', 'read', 'information_gathering', array(&$this, 'information_gathering'));
-					add_submenu_page('lober-tools', 'ii_title','ii_title', 'read', 'information_import', array(&$this, 'information_import'));
+					add_submenu_page('lober-tools', $titles['ig_title'], $titles['ig_title'], 'read', 'information_gathering', array(&$this, 'information_gathering'));
+					add_submenu_page('lober-tools', $titles['ii_title'], $titles['ii_title'], 'read', 'information_import', array(&$this, 'information_import'));
 					break;
 				default:
-					add_submenu_page('lober-tools', 'ig_title','ig_title', 'read', 'information_gathering', array(&$this, 'information_gathering'));
-					add_submenu_page('lober-tools', 'ii_title','ii_title', 'read', 'information_import', array(&$this, 'information_import'));
+					add_submenu_page('lober-tools', $titles['ig_title'], $titles['ig_title'], 'read', 'information_gathering', array(&$this, 'information_gathering'));
+					add_submenu_page('lober-tools', $titles['ii_title'], $titles['ii_title'], 'read', 'information_import', array(&$this, 'information_import'));
 					add_submenu_page('lober-tools', '環境設定','環境設定', 'read', 'environmental_settings', array(&$this, 'environmental_settings'));
 					break;
 			}
