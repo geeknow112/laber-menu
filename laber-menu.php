@@ -58,7 +58,6 @@ class LaberMenu {
 		} else {
 			add_submenu_page('lober-tools', '環境設定','環境設定', 'read', 'environmental_settings', array(&$this, 'environmental_settings'));
 		}
-//phpinfo();exit;
 	}
 
 	/**
