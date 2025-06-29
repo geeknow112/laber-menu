@@ -77,7 +77,15 @@ class LaberMenu {
 	 * 
 	 **/
 	function information_gathering() {
-		require(dirname(__DIR__). '/information-gathering/information-gathering.php');
+		$plugin_file = dirname(__DIR__). '/information-gathering/information-gathering.php';
+
+		if (file_exists($plugin_file)) {
+			$this->vd($plugin_file);
+			require($plugin_file);
+		} else {
+			$this->vd('error');
+		}
+
 	}
 
 	/**
@@ -105,7 +113,7 @@ class LaberMenu {
 	 * 環境設定
 	 **/
 	function environmental_settings() {
-		?><div><?php  phpinfo(); ?></div><?php
+//		?><div><?php  phpinfo(); ?></div><?php
 	}
 
 	/**
