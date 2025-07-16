@@ -80,7 +80,7 @@ class LaberMenu {
 		$plugin_file = dirname(__DIR__). '/information-gathering/information-gathering.php';
 
 		if (file_exists($plugin_file)) {
-			$this->vd($plugin_file);
+//			$this->vd($plugin_file);
 			require($plugin_file);
 		} else {
 			$this->vd('error');
@@ -143,7 +143,7 @@ class LaberMenu {
 		foreach ($ret_users as $k => $v) {
 			$users[] = $v->user_login;
 		}
-		$this->vd($users);
+//		$this->vd($users);
 	}
 
 	/**
